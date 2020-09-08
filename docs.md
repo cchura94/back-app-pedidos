@@ -22,3 +22,36 @@ git clone <direccion remota>
 ```
 git status
 ```
+
+- Para agregar todos los archivos a la zona intermedia (INDEX)
+
+```
+git add .
+```
+
+- Para agregar al area de espera (HEAD)
+
+```
+git commit -m "Primer commit"
+```
+
+### Ahora ya estamos preparados para subir al repositorio remoto
+
+- Si quieres conectar tu repositorio local a un repositorio remoto:
+
+```
+git remote add origin <sever>
+git remote add origin https://github.com/cchura94/back-app-pedidos.git
+```
+
+- para verificar las direcciones remotas
+
+```
+git remote -v
+```
+
+- Por ultimo: para subir del repositorio local al repositorio remoto
+
+```
+git push origin master
+```
