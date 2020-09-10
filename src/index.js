@@ -1,17 +1,23 @@
 // imports
-const express = require("express");
-const morgan = require("morgan");
+import express from "express";
+import morgan from "morgan";
 //importando el modulo rutas
-const routes = require("./routes");
+import { rutas } from "./routes";
+import { port } from "./config/config";
 
 // configs
 const app = express();
 app.use(morgan("dev"));
 
+app.set("port", process.env.PORT || port);
+
+//app.set("nombre", "Cristian");
+//console.log(app.get("nombre"));
+
 //Habilitar rutas
-routes.rutas(app);
+rutas(app);
 
 // levantar servidor
-app.listen(3000, () => {
-  console.log("Servidor levantado en: ");
+app.listen(app.get("port"), () => {
+  console.log(`Servidor corriendo en: 127.0.0.1:${app.get("port")}`);
 });
