@@ -28,3 +28,7 @@ module.exports.rutas = (app) => {
 
 //NOMBRE: Laptop Toshiva 2020
 //slug: laptop-toshiva-2020
+
+// 1 Cliente es persona
+// 1 pedido
+// N Productos

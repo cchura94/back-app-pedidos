@@ -1,5 +1,17 @@
-const listar = function (req, res) {
-  res.json({ mensaje: "Lista de Clientes" });
+const cliente = require("./../models/Cliente");
+
+const listar = async function (req, res) {
+  /*cliente
+    .find()
+    .then((datos) => {
+      res.json(datos);
+    })
+    .catch((err) => {
+      console.log("ERROR: ", err);
+    });*/
+  var datos = await cliente.find();
+  res.json(datos);
+  //res.json({ mensaje: "Lista de Clientes" });
 };
 
 const mostrar = function (req, res) {
@@ -7,6 +19,11 @@ const mostrar = function (req, res) {
 };
 
 const guardar = function (req, res) {
+  const clie = new cliente({
+    nombres: "Juan Perez",
+    apellidos: "Quisbert",
+  });
+  clie.save();
   res.json({ mensaje: "Guardar Cliente" });
 };
 
