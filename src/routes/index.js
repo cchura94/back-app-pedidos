@@ -2,13 +2,19 @@ const clienteController = require("./../controllers/clienteController");
 
 const productoController = require("./../controllers/productoController");
 
+const authController = require("./../controllers/authController");
+
+const usuarioController = require("./../controllers/usuarioController");
+
 /**
  * Necesita enviar app de express
  * @param app:express
  */
 module.exports.rutas = (app) => {
   // rutas de auth
+  app.post("/login", authController.login);
   // rutas de usuario
+  app.post("/usuario", usuarioController.guardar);
   // rutas de Cliente
   app.get("/cliente", clienteController.listar);
   app.get("/cliente/:id", clienteController.mostrar);
