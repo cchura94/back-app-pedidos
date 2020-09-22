@@ -2,6 +2,17 @@ const Usuario = require("./../models/Usuario");
 //Importamos el bcrypt para cifrar las contraseñas
 const bcrypt = require("bcrypt");
 
+const listar = async function (req, res) {
+  try {
+    var datos = await Usuario.find();
+    res.json(datos);
+  } catch (error) {
+    console.log("ERROR: ", error);
+  }
+
+  //res.json({ mensaje: "Lista de Clientes" });
+};
+
 const guardar = async (req, res) => {
   var BCRYPT_SALT_ROUNDS = 12;
   bcrypt
@@ -28,5 +39,6 @@ const guardar = async (req, res) => {
 };
 
 module.exports = {
+  listar,
   guardar,
 };

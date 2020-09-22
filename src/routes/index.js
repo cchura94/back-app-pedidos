@@ -6,6 +6,8 @@ const authController = require("./../controllers/authController");
 
 const usuarioController = require("./../controllers/usuarioController");
 
+// Middlewares
+const authMiddlewares = require("./../middlewares/authMiddleware")
 /**
  * Necesita enviar app de express
  * @param app:express
@@ -14,6 +16,7 @@ module.exports.rutas = (app) => {
   // rutas de auth
   app.post("/login", authController.login);
   // rutas de usuario
+  app.get("/usuario", authMiddlewares.verificarAuth, usuarioController.listar);
   app.post("/usuario", usuarioController.guardar);
   // rutas de Cliente
   app.get("/cliente", clienteController.listar);
@@ -22,7 +25,7 @@ module.exports.rutas = (app) => {
   app.put("/cliente/:id", clienteController.modificar);
   app.delete("/cliente/:id", clienteController.eliminar);
   // rutas de Producto
-  app.get("/producto", productoController.listar);
+  app.get("/producto", productoController.listarprod);
   app.get("/producto/:id", productoController.mostrar);
   app.post("/producto", productoController.guardar);
   app.put("/producto/:id", productoController.modificar);

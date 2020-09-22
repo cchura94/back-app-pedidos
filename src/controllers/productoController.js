@@ -1,7 +1,7 @@
 const Producto = require("./../models/Producto");
 const { isValidObjectId } = require("mongoose");
 
-const listar = async function (req, res) {
+const listarprod = async function (req, res) {
   /*Producto.find()
     .then((datos) => {
       res.json(datos);
@@ -14,6 +14,10 @@ const listar = async function (req, res) {
     res.json(datos);
   } catch (error) {
     console.log(error);
+    res.json({
+      mensaje: "Ocurrio un error al listar producto",
+      status: 404,
+    });
   }
 };
 
@@ -54,7 +58,7 @@ const eliminar = function (req, res) {
 };
 
 module.exports = {
-  listar,
+  listarprod,
   mostrar,
   guardar,
   modificar,
