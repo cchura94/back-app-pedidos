@@ -49,12 +49,30 @@ const guardar = function (req, res) {
   }
 };
 
-const modificar = function (req, res) {
-  res.json({ mensaje: "Modificar Producto" });
+const modificar = async function (req, res) {
+  try {
+    let id = req.params.id;
+    const prod = await Producto.findById(id);
+    const prodmod = await prod.updateOne(req.body);
+    res.json({ mensaje: "Producto Modificado", prodmod });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send({ mesaje: "Ocurrio un error al intentar modificarel Producto" });
+  }
 };
 
-const eliminar = function (req, res) {
-  res.json({ mensaje: "Eliminar Producto" });
+const eliminar = async function (req, res) {
+  try {
+    await Producto.findByIdAndDelete(req.params.id);
+    res.json({ mensaje: "Producto Eliminado" });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send({ mesaje: "Ocurrio un error al intentar eliminar el Producto" });
+  }
 };
 
 module.exports = {
