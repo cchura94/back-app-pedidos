@@ -1,11 +1,13 @@
-const { mongoose, Schema } = require("mongoose");
+const mongoose = require("mongoose");
 
-const PedidoSchema = new mongoose.Schema(
+const Schema = mongoose.Schema;
+
+const PedidoSchema = Schema(
   {
     cliente: { type: Schema.Types.ObjectId, ref: "Cliente" },
     productos: [
       {
-        producto: { Type: Schema.Types.ObjectId, ref: "Producto" },
+        producto: { type: Schema.Types.ObjectId, ref: "Producto" },
         cantidad: { type: Number, min: 1, max: 100 },
       },
     ],
